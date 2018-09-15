@@ -1,8 +1,8 @@
-#include "XColorButton.hh"
+#include "ColorButton.hh"
 
 #include <QColorDialog>
 
-XColorButton::XColorButton(QWidget* parent)
+ColorButton::ColorButton(QWidget* parent)
     : QPushButton{parent},
       _color{QColor{255, 255, 255}}
 {
@@ -17,20 +17,20 @@ XColorButton::XColorButton(QWidget* parent)
     setSelectedColor(_color);
 }
 
-XColorButton::~XColorButton()
+ColorButton::~ColorButton()
 {
 }
 
 
-QColor const& XColorButton::selectedColor() const
+QColor const& ColorButton::selectedColor() const
 {
     return _color;
 }
 
-void XColorButton::setSelectedColor(QColor const& color)
+void ColorButton::setSelectedColor(QColor const& color)
 {
     _color = color;
 
-    setStyleSheet(QString("XColorButton { background-color: %1 }").arg(_color.name()));
+    setStyleSheet(QString("ColorButton { background-color: %1 }").arg(_color.name()));
     clearFocus();
 }

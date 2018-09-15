@@ -27,15 +27,15 @@ SOURCES += \
         mainwindow.cpp \
         widgets/KeyboardWidget.cc \
         widgets/KeyboardButton.cc \
-        widgets/XSpeedSlider.cc \
-        widgets/XColorButton.cc
+        widgets/SpeedSlider.cc \
+        widgets/ColorButton.cc
 
 HEADERS += \
         mainwindow.h \
         widgets/KeyboardWidget.hh \
         widgets/KeyboardButton.hh \
-        widgets/XSpeedSlider.hh \
-        widgets/XColorButton.hh
+        widgets/SpeedSlider.hh \
+        widgets/ColorButton.hh
 
 FORMS += \
         mainwindow.ui

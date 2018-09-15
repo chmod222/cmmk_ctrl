@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "widgets/KeyboardWidget.hh"
-#include "widgets/XColorButton.hh"
+#include "widgets/ColorButton.hh"
 
 extern "C" {
 #include "libcmmk.h"
@@ -59,7 +59,7 @@ private:
   Ui::MainWindow *ui;
 
   QCheckBox* _overrideCheckbox;
-  XColorButton* _colorSelector;
+  ColorButton* _colorSelector;
   QComboBox* _profileSelector;
   QComboBox* _effectSelector;
 

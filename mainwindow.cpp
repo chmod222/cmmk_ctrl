@@ -4,8 +4,8 @@
 #include "widgets/KeyboardWidget.hh"
 #include "widgets/KeyboardButton.hh"
 
-#include "widgets/XSpeedSlider.hh"
-#include "widgets/XColorButton.hh"
+#include "widgets/SpeedSlider.hh"
+#include "widgets/ColorButton.hh"
 
 #include <QComboBox>
 #include <QPushButton>
@@ -97,11 +97,11 @@ MainWindow::MainWindow(struct cmmk* dev, QWidget* parent) :
                 _effectSelector->currentData().value<int>()));
         });
 
-    _colorSelector = new XColorButton{};
+    _colorSelector = new ColorButton{};
     _colorSelector->setMinimumWidth(50);
     _colorSelector->setMaximumHeight(24);
 
-    connect(_colorSelector, &XColorButton::colorSelected, this, [=] (QColor selection) {
+    connect(_colorSelector, &ColorButton::colorSelected, this, [=] (QColor selection) {
         _activeColor = selection;
     });
 
@@ -316,7 +316,7 @@ void MainWindow::setupEffectsList()
     };
 
     auto addColor = [&] (auto effect, QString name, struct rgb cmmk_generic_effect::*ptr) {
-        auto colorPicker = new XColorButton{};
+        auto colorPicker = new ColorButton{};
 
         colorPicker->setMaximumHeight(22);
         addParam(effect, name, colorPicker);
@@ -334,7 +334,7 @@ void MainWindow::setupEffectsList()
             });
 
         connect(
-            colorPicker, &XColorButton::colorSelected,
+            colorPicker, &ColorButton::colorSelected,
             this, [=] (auto sel) {
                 int eid = effect->data(0, Qt::UserRole).toInt();
 
@@ -345,7 +345,7 @@ void MainWindow::setupEffectsList()
     };
 
     auto addSpeed = [&] (auto effect, QString name, int cmmk_generic_effect::*ptr) {
-        auto slider = new XSpeedSlider{};
+        auto slider = new SpeedSlider{};
 
         addParam(effect, name, slider);
 
@@ -360,7 +360,7 @@ void MainWindow::setupEffectsList()
             });
 
         connect(
-            slider, &XSpeedSlider::valueChanged,
+            slider, &SpeedSlider::valueChanged,
             this, [=] {
                 int eid = effect->data(0, Qt::UserRole).toInt();
 

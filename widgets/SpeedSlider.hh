@@ -1,5 +1,5 @@
-#ifndef XSPEEDSLIDER_HH
-#define XSPEEDSLIDER_HH
+#ifndef SPEEDSLIDER_HH
+#define SPEEDSLIDER_HH
 
 #include <QSlider>
 
@@ -8,13 +8,13 @@
  * around 0x10 rather than considering speed faster the higher the number it's given is, we'll
  * write our own slider that works slightly backwards and internally thinks it's going from 0 - 100.
  */
-class XSpeedSlider : public QSlider
+class SpeedSlider : public QSlider
 {
     Q_OBJECT
 
 public:
-    explicit XSpeedSlider(QWidget* parent = nullptr);
-    virtual ~XSpeedSlider() override;
+    explicit SpeedSlider(QWidget* parent = nullptr);
+    virtual ~SpeedSlider() override;
 
     virtual int value() const;
     virtual void setValue(int value);

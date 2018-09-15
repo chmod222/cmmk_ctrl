@@ -1,6 +1,6 @@
-#include "XSpeedSlider.hh"
+#include "SpeedSlider.hh"
 
-XSpeedSlider::XSpeedSlider(QWidget* parent)
+SpeedSlider::SpeedSlider(QWidget* parent)
     : QSlider{Qt::Horizontal, parent},
       _speedMax{0x10},
       _speedMin{0x45}
@@ -12,7 +12,7 @@ XSpeedSlider::XSpeedSlider(QWidget* parent)
     setTickPosition(TickPosition::TicksBelow);
 }
 
-XSpeedSlider::~XSpeedSlider()
+SpeedSlider::~SpeedSlider()
 {
 }
 
@@ -24,13 +24,13 @@ float ilerp(float t, float v0, float v1) {
   return std::abs((t - v0) / (v1 - v0));
 }
 
-int XSpeedSlider::value() const
+int SpeedSlider::value() const
 {
     return static_cast<int>(
         lerp(_speedMin, _speedMax, QSlider::value() / static_cast<float>(maximum())));
 }
 
-void XSpeedSlider::setValue(int value)
+void SpeedSlider::setValue(int value)
 {
     QSlider::setValue(
         static_cast<int>(ilerp(value, _speedMin, _speedMax) * maximum()));
