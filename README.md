@@ -17,7 +17,7 @@ device should work as expected though.
 
 ## Features
 * Control over the predefined effects with the exception of Multilayer mode (supported in
-  the library, but still lacks a somewhat intuitive AI)
+  the library, but still lacks a somewhat intuitive UI)
 * Manual mode
 * Saving the profile configuration back to the device
 
@@ -30,4 +30,4 @@ Example:
 
     # Use absolute paths so cmmk_ctrl can locate the image assets no matter where it's run
     make PREFIX="$PWD/dist"
-    make PREFIX="$PWD/"dist install
+    make PREFIX="$PWD/dist" install
