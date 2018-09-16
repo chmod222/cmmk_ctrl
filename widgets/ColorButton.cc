@@ -9,9 +9,11 @@ ColorButton::ColorButton(QWidget* parent)
     connect(this, &QPushButton::clicked, this, [=] {
         auto selected = QColorDialog::getColor(selectedColor(), this);
 
-        setSelectedColor(selected);
+        if (selected.isValid()) {
+            setSelectedColor(selected);
 
-        emit colorSelected(selected);
+            emit colorSelected(selected);
+        }
     });
 
     setSelectedColor(_color);
