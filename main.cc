@@ -1,4 +1,20 @@
-#include "mainwindow.h"
+/*
+ * This file is part of cmmk_ctrl.
+ *
+ * cmmk_ctrl is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published
+ * by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * cmmk_ctrl is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cmmk_ctrl.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#include "mainwindow.hh"
 
 #include <QApplication>
 #include <QtDebug>
@@ -8,9 +24,7 @@
 #include <thread>
 #include <chrono>
 
-extern "C" {
-#include "libcmmk.h"
-}
+#include "libcmmk/libcmmk.h"
 
 using namespace std::literals::chrono_literals;
 
@@ -30,7 +44,6 @@ int main(int argc, char *argv[])
 
   p.process(a);
 
-  // TODO: Autodetect
   int foundProduct;
 
   if (cmmk_find_device(&foundProduct) == 0) {

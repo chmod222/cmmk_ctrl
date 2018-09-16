@@ -1,4 +1,20 @@
-#include "mainwindow.h"
+/*
+ * This file is part of cmmk_ctrl.
+ *
+ * cmmk_ctrl is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published
+ * by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * cmmk_ctrl is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cmmk_ctrl.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#include "mainwindow.hh"
 #include "ui_mainwindow.h"
 
 #include "widgets/KeyboardWidget.hh"
@@ -16,9 +32,7 @@
 
 #include <iostream>
 
-extern "C" {
-#include "libcmmk.h"
-}
+#include "libcmmk/libcmmk.h"
 
 static char const* effectNames[256] = { nullptr };
 
@@ -215,23 +229,6 @@ void MainWindow::switchEffect(enum cmmk_effect_id eff)
 
     _currentEffect = eff;
     restoreEffectPreview();
-}
-
-void MainWindow::writeProfileData()
-{
-    cmmk_set_customized_leds(_dev, &_modifiedCustomColors);
-
-    cmmk_set_control_mode(_dev, CMMK_PROFILE_CUSTOMIZATION);
-
-    for (int i = 0; i < 10; ++i) {
-        auto eff = static_cast<enum cmmk_effect_id>(i);
-
-        cmmk_set_active_effect(_dev, eff);
-        cmmk_set_effect(_dev, eff, &_effectSettings[i]);
-    }
-
-    cmmk_set_active_effect(_dev, _currentEffect);
-    //cmmk_set_control_mode(_dev, CMMK_EFFECT);
 }
 
 void MainWindow::pullProfileData()
