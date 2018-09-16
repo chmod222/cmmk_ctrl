@@ -1,6 +1,8 @@
 ## About
 cmmk_ctrl is a simple Qt based RGB control application for CoolerMaster's MasterKey keyboards.
 
+![Alt text](/screenshots/main.png?raw=true "Main window")<Paste>
+
 ## Disclaimer
 This project is neither endorsed by, nor supported by, nor known to CoolerMaster.  As usual with
 these sorts of projects, there is no warranty or liability should your device catch fire or eat
