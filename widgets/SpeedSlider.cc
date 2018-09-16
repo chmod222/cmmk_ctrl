@@ -3,10 +3,10 @@
 SpeedSlider::SpeedSlider(QWidget* parent)
     : QSlider{Qt::Horizontal, parent},
       _speedMax{0x10},
-      _speedMin{0x45}
+      _speedMin{0x50}
 {
     setMinimum(0);
-    setMaximum(10);
+    setMaximum(20);
 
     setTickInterval(1);
     setTickPosition(TickPosition::TicksBelow);
