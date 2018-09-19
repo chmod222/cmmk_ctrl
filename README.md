@@ -21,6 +21,14 @@ device should work as expected though.
 * Manual mode
 * Saving the profile configuration back to the device
 
+# Installation
+If you're using Arch Linux, you can [find `cmmk_ctrl` in the
+AUR](https://aur.archlinux.org/packages/cmmk_ctrl-git/). Depending on your AUR helper (e.g.
+[yay](https://github.com/Jguer/yay)), you can install it with:
+ ```
+yay -S cmmk_ctrl-git
+```
+
 ## Build Instructions
 The build system is a bit messy because of the libcmmk depedency, cmmk_ctrl uses a standard makefile
 which compiles the dependency and then the main application.  The PREFIX variable convention is
