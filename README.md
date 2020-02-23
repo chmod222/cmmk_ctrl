@@ -29,6 +29,8 @@ AUR](https://aur.archlinux.org/packages/cmmk_ctrl-git/). Depending on your AUR h
 yay -S cmmk_ctrl-git
 ```
 
+For Debian based distributions such as Ubuntu, you must follow the build instructions below.
+
 ## Build Instructions
 The build system is a bit messy because of the libcmmk depedency, cmmk_ctrl uses a standard makefile
 which compiles the dependency and then the main application.  The PREFIX variable convention is
@@ -39,3 +41,24 @@ Example:
     # Use absolute paths so cmmk_ctrl can locate the image assets no matter where it's run
     make PREFIX="$PWD/dist"
     make PREFIX="$PWD/dist" install
+
+For Debian based distributions such as Ubuntu, you may use the following build script:
+
+``` bash
+#!/usr/bin/env bash
+
+sudo apt install build-essential libusb-1.0-0-dev qt5-default libqt5svg5-dev
+cd /opt
+sudo git clone https://github.com/chmod222/cmmk_ctrl.git cmmk-ctrl
+cd cmmk-ctrl/
+sudo git submodule init
+sudo git submodule update
+sudo sed -i 's|out/$@.so|out/$@.so -lusb-1.0|g' libcmmk/Makefile
+sudo make PREFIX="$PWD/dist"
+sudo make PREFIX="$PWD/dist" install
+
+echo '
+Run with:
+sudo LD_LIBRARY_PATH=/opt/cmmk-ctrl/dist/lib /opt/cmmk-ctrl/dist/bin/cmmk_ctrl
+'
+```
