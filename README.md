@@ -1,4 +1,12 @@
-## About
+# DEPRECATION NOTICE
+This repository is unmaintained and has been for quite some time. The author has moved on to new
+hardware and off GitHub for the most part, so this repository will stay frozen in time. No further
+development should be expected.
+
+Anyone out there who still finds this project useful should feel free to start a new authoritative
+fork.
+
+# cmmk_ctrl: Unofficial Cooler Master MasterKey Control Software
 cmmk_ctrl is a simple Qt based RGB control application for CoolerMaster's MasterKey keyboards.
 
 ![Alt text](/screenshots/main.png?raw=true "Main window")<Paste>
